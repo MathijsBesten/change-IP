@@ -46,5 +46,17 @@ namespace change_IP.Properties {
                 this["Gateway"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.250")]
+        public string IPRouter {
+            get {
+                return ((string)(this["IPRouter"]));
+            }
+            set {
+                this["IPRouter"] = value;
+            }
+        }
     }
 }

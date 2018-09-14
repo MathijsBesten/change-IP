@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(change_settings));
             this.label1 = new System.Windows.Forms.Label();
             this.instellingNaam = new System.Windows.Forms.Label();
             this.inputBox = new System.Windows.Forms.TextBox();
@@ -38,7 +39,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(191, 69);
+            this.label1.Location = new System.Drawing.Point(202, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 25);
             this.label1.TabIndex = 0;
@@ -55,14 +56,14 @@
             // 
             // inputBox
             // 
-            this.inputBox.Location = new System.Drawing.Point(293, 124);
+            this.inputBox.Location = new System.Drawing.Point(329, 124);
             this.inputBox.Name = "inputBox";
             this.inputBox.Size = new System.Drawing.Size(100, 20);
             this.inputBox.TabIndex = 2;
             // 
             // opslaanButton
             // 
-            this.opslaanButton.Location = new System.Drawing.Point(250, 182);
+            this.opslaanButton.Location = new System.Drawing.Point(257, 182);
             this.opslaanButton.Name = "opslaanButton";
             this.opslaanButton.Size = new System.Drawing.Size(75, 23);
             this.opslaanButton.TabIndex = 3;
@@ -79,6 +80,7 @@
             this.Controls.Add(this.inputBox);
             this.Controls.Add(this.instellingNaam);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "change_settings";
             this.Text = "Verander instelling...";
             this.ResumeLayout(false);

@@ -39,6 +39,9 @@ namespace change_IP
             this.geavanceerdeInstellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iPInstellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gatewayWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openRouterLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.standaardRouterpoortWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +87,7 @@ namespace change_IP
             // 
             // turnOnDHCP
             // 
-            this.turnOnDHCP.Location = new System.Drawing.Point(117, 233);
+            this.turnOnDHCP.Location = new System.Drawing.Point(117, 186);
             this.turnOnDHCP.Name = "turnOnDHCP";
             this.turnOnDHCP.Size = new System.Drawing.Size(121, 23);
             this.turnOnDHCP.TabIndex = 6;
@@ -113,7 +116,8 @@ namespace change_IP
             // 
             this.geavanceerdeInstellingenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iPInstellingenToolStripMenuItem,
-            this.gatewayWijzigenToolStripMenuItem});
+            this.gatewayWijzigenToolStripMenuItem,
+            this.standaardRouterpoortWijzigenToolStripMenuItem});
             this.geavanceerdeInstellingenToolStripMenuItem.Name = "geavanceerdeInstellingenToolStripMenuItem";
             this.geavanceerdeInstellingenToolStripMenuItem.Size = new System.Drawing.Size(157, 20);
             this.geavanceerdeInstellingenToolStripMenuItem.Text = "Geavanceerde instellingen";
@@ -121,22 +125,50 @@ namespace change_IP
             // iPInstellingenToolStripMenuItem
             // 
             this.iPInstellingenToolStripMenuItem.Name = "iPInstellingenToolStripMenuItem";
-            this.iPInstellingenToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.iPInstellingenToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.iPInstellingenToolStripMenuItem.Text = "NIC wijzigen";
             this.iPInstellingenToolStripMenuItem.Click += new System.EventHandler(this.iPInstellingenToolStripMenuItem_Click);
             // 
             // gatewayWijzigenToolStripMenuItem
             // 
             this.gatewayWijzigenToolStripMenuItem.Name = "gatewayWijzigenToolStripMenuItem";
-            this.gatewayWijzigenToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.gatewayWijzigenToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.gatewayWijzigenToolStripMenuItem.Text = "Gateway wijzigen";
             this.gatewayWijzigenToolStripMenuItem.Click += new System.EventHandler(this.gatewayWijzigenToolStripMenuItem_Click);
+            // 
+            // openRouterLabel
+            // 
+            this.openRouterLabel.AutoSize = true;
+            this.openRouterLabel.Location = new System.Drawing.Point(114, 249);
+            this.openRouterLabel.Name = "openRouterLabel";
+            this.openRouterLabel.Size = new System.Drawing.Size(133, 13);
+            this.openRouterLabel.TabIndex = 9;
+            this.openRouterLabel.Text = "IP adres router veranderen";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(253, 244);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Router openen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // standaardRouterpoortWijzigenToolStripMenuItem
+            // 
+            this.standaardRouterpoortWijzigenToolStripMenuItem.Name = "standaardRouterpoortWijzigenToolStripMenuItem";
+            this.standaardRouterpoortWijzigenToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.standaardRouterpoortWijzigenToolStripMenuItem.Text = "Standaard routerpoort wijzigen";
+            this.standaardRouterpoortWijzigenToolStripMenuItem.Click += new System.EventHandler(this.standaardRouterpoortWijzigenToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.openRouterLabel);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.turnOnDHCP);
             this.Controls.Add(this.saveSettings);
@@ -167,6 +199,9 @@ namespace change_IP
         private System.Windows.Forms.ToolStripMenuItem geavanceerdeInstellingenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iPInstellingenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gatewayWijzigenToolStripMenuItem;
+        private System.Windows.Forms.Label openRouterLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem standaardRouterpoortWijzigenToolStripMenuItem;
     }
 }
 

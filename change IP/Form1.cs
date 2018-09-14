@@ -23,6 +23,7 @@ namespace change_IP
         }
         public string NICnaam = Properties.Settings.Default.NICnaam; //naam van netwerkadaptor
         public string Gateway = Properties.Settings.Default.Gateway;
+        public string IPRouter = Properties.Settings.Default.IPRouter;
 
         private void saveSettings_Click(object sender, EventArgs e)
         {
@@ -64,18 +65,39 @@ namespace change_IP
                 throw;
             }
 
+        } 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("http://"+ Properties.Settings.Default.IPRouter);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("kan webpagina niet openen - foutmelding: " + error.Message);
+                throw;
+            }
         }
 
+        #region settingseditors 
         private void iPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("Netwerk adapter naam", "NICnaam", Properties.Settings.Default.NICnaam);
+            NICnaam = Properties.Settings.Default.NICnaam;
         }
-
         private void gatewayWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("Gateway", "Gateway", Properties.Settings.Default.Gateway);
+            MessageBox.Show(Gateway);
         }
+        private void standaardRouterpoortWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            change_settings dialog = new change_settings();
+            dialog.ShowDialog("Standaard router IP adres", "IPRouter", Properties.Settings.Default.IPRouter);
+            IPRouter = Properties.Settings.Default.IPRouter;
+        }
+        #endregion
     }
 }
