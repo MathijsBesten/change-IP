@@ -21,10 +21,12 @@ namespace change_IP
         {
             InitializeComponent();
         }
+        #region public values
         public string NICnaam = Properties.Settings.Default.NICnaam; //naam van netwerkadaptor
         public string Gateway = Properties.Settings.Default.Gateway;
         public string IPRouter = Properties.Settings.Default.IPRouter;
-
+        #endregion
+        #region button_click
         private void saveSettings_Click(object sender, EventArgs e)
         {
             IPAddress geldigIPAdres;
@@ -48,7 +50,6 @@ namespace change_IP
 
             }
         }
-
         private void turnOnDHCP_Click(object sender, EventArgs e)
         {
             try
@@ -64,7 +65,6 @@ namespace change_IP
                 MessageBox.Show(error.Message);
                 throw;
             }
-
         } 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -78,7 +78,7 @@ namespace change_IP
                 throw;
             }
         }
-
+        #endregion
         #region settingseditors 
         private void iPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
         {
