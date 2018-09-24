@@ -22,7 +22,8 @@ namespace change_IP
             InitializeComponent();
         }
         #region public values
-        public string NICnaam = Properties.Settings.Default.NICnaam; //naam van netwerkadaptor
+        public string NICnaam = Properties.Settings.Default.NICnaam; //naam van WIFI adaptor
+        public string LANnaam = Properties.Settings.Default.LANnaam; //naam van LAN adaptor
         public string Gateway = Properties.Settings.Default.Gateway;
         public string IPRouter = Properties.Settings.Default.IPRouter;
         #endregion
@@ -31,39 +32,73 @@ namespace change_IP
         {
             IPAddress geldigIPAdres;
             bool inputIsValid = IPAddress.TryParse(Input.Text,out geldigIPAdres);
-            if (inputIsValid)
+            if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
             {
+                MessageBox.Show("Er is geen Netwerk interface geselecteerd. Kies WIFI of LAN. Probeer het opnieuw");
+                return;
+            }
+            else
+            { 
+                string NaamNetwerkInterface;
+                if (wifiVerbindingButton.Checked == true)
+                {
+                    NaamNetwerkInterface = NICnaam;
+                }
+                else // LAN is now the only option
+                {
+                    NaamNetwerkInterface = LANnaam;
+                }
+                if (inputIsValid)
+                {
+                    try
+                    {
+                        Process p = new Process();
+                        ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \""+ NaamNetwerkInterface + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 "+ Gateway + " 1");
+                        psi.Verb = "runas";
+                        p.StartInfo = psi;
+                        p.Start();
+
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message);
+                        throw;
+                    }
+                }
+            }
+        }
+        private void turnOnDHCP_Click(object sender, EventArgs e)
+        {
+            if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
+            {
+                MessageBox.Show("Er is geen Netwerk interface geselecteerd. Kies WIFI of LAN. Probeer het opnieuw");
+                return;
+            }
+            else
+            {
+                string NaamNetwerkInterface;
+                if (wifiVerbindingButton.Checked == true)
+                {
+                    NaamNetwerkInterface = NICnaam;
+                }
+                else // LAN is now the only option
+                {
+                    NaamNetwerkInterface = LANnaam;
+                }
+
                 try
                 {
                     Process p = new Process();
-                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \""+ NICnaam + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 "+ Gateway + " 1");
+                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NICnaam + "\" dhcp");
                     psi.Verb = "runas";
                     p.StartInfo = psi;
                     p.Start();
-
                 }
                 catch (Exception error)
                 {
                     MessageBox.Show(error.Message);
                     throw;
                 }
-
-            }
-        }
-        private void turnOnDHCP_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Process p = new Process();
-                ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NICnaam + "\" dhcp");
-                psi.Verb = "runas";
-                p.StartInfo = psi;
-                p.Start();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                throw;
             }
         } 
         private void button1_Click(object sender, EventArgs e)
@@ -80,6 +115,12 @@ namespace change_IP
         }
         #endregion
         #region settingseditors 
+        private void lANNaamWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            change_settings dialog = new change_settings();
+            dialog.ShowDialog("Netwerk adapter naam", "LANnaam", Properties.Settings.Default.LANnaam);
+            LANnaam = Properties.Settings.Default.LANnaam;
+        }
         private void iPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();

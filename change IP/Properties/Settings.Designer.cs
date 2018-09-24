@@ -58,5 +58,17 @@ namespace change_IP.Properties {
                 this["IPRouter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LAN-verbinding")]
+        public string LANnaam {
+            get {
+                return ((string)(this["LANnaam"]));
+            }
+            set {
+                this["LANnaam"] = value;
+            }
+        }
     }
 }
