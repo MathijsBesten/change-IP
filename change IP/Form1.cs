@@ -89,7 +89,7 @@ namespace change_IP
                 try
                 {
                     Process p = new Process();
-                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NICnaam + "\" dhcp");
+                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" dhcp");
                     psi.Verb = "runas";
                     p.StartInfo = psi;
                     p.Start();
