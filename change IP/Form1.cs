@@ -118,20 +118,20 @@ namespace change_IP
         private void lANNaamWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
-            dialog.ShowDialog("Netwerk adapter naam", "LANnaam", Properties.Settings.Default.LANnaam);
+            dialog.ShowDialog("LAN adapter naam", "LANnaam", Properties.Settings.Default.LANnaam);
             LANnaam = Properties.Settings.Default.LANnaam;
         }
         private void iPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
-            dialog.ShowDialog("Netwerk adapter naam", "NICnaam", Properties.Settings.Default.NICnaam);
+            dialog.ShowDialog("WIFI adapter naam", "NICnaam", Properties.Settings.Default.NICnaam);
             NICnaam = Properties.Settings.Default.NICnaam;
         }
         private void gatewayWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("Gateway", "Gateway", Properties.Settings.Default.Gateway);
-            MessageBox.Show(Gateway);
+            Gateway = Properties.Settings.Default.Gateway;
         }
         private void standaardRouterpoortWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
