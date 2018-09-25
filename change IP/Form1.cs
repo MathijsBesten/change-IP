@@ -101,7 +101,7 @@ namespace change_IP
                 }
             }
         } 
-        private void button1_Click(object sender, EventArgs e)
+        private void openRouterWebpageButton_Click(object sender, EventArgs e)
         {
             try
             {

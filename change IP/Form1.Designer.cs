@@ -37,17 +37,17 @@ namespace change_IP
             this.Input = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.geavanceerdeInstellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lANNaamWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iPInstellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gatewayWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.standaardRouterpoortWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRouterLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openRouterWebpageButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.kiesWifiOfLanPanel = new System.Windows.Forms.Panel();
-            this.lanVerbindingButton = new System.Windows.Forms.RadioButton();
             this.wifiVerbindingButton = new System.Windows.Forms.RadioButton();
+            this.lanVerbindingButton = new System.Windows.Forms.RadioButton();
             this.verbindingLabel = new System.Windows.Forms.Label();
-            this.lANNaamWijzigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.kiesWifiOfLanPanel.SuspendLayout();
             this.SuspendLayout();
@@ -130,6 +130,13 @@ namespace change_IP
             this.geavanceerdeInstellingenToolStripMenuItem.Size = new System.Drawing.Size(157, 20);
             this.geavanceerdeInstellingenToolStripMenuItem.Text = "Geavanceerde instellingen";
             // 
+            // lANNaamWijzigenToolStripMenuItem
+            // 
+            this.lANNaamWijzigenToolStripMenuItem.Name = "lANNaamWijzigenToolStripMenuItem";
+            this.lANNaamWijzigenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.lANNaamWijzigenToolStripMenuItem.Text = "LAN naam wijzigen";
+            this.lANNaamWijzigenToolStripMenuItem.Click += new System.EventHandler(this.lANNaamWijzigenToolStripMenuItem_Click);
+            // 
             // iPInstellingenToolStripMenuItem
             // 
             this.iPInstellingenToolStripMenuItem.Name = "iPInstellingenToolStripMenuItem";
@@ -160,15 +167,15 @@ namespace change_IP
             this.openRouterLabel.TabIndex = 9;
             this.openRouterLabel.Text = "IP adres router veranderen";
             // 
-            // button1
+            // openRouterWebpageButton
             // 
-            this.button1.Location = new System.Drawing.Point(253, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Router openen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.openRouterWebpageButton.Location = new System.Drawing.Point(253, 265);
+            this.openRouterWebpageButton.Name = "openRouterWebpageButton";
+            this.openRouterWebpageButton.Size = new System.Drawing.Size(121, 23);
+            this.openRouterWebpageButton.TabIndex = 10;
+            this.openRouterWebpageButton.Text = "Router openen";
+            this.openRouterWebpageButton.UseVisualStyleBackColor = true;
+            this.openRouterWebpageButton.Click += new System.EventHandler(this.openRouterWebpageButton_Click);
             // 
             // kiesWifiOfLanPanel
             // 
@@ -178,17 +185,6 @@ namespace change_IP
             this.kiesWifiOfLanPanel.Name = "kiesWifiOfLanPanel";
             this.kiesWifiOfLanPanel.Size = new System.Drawing.Size(149, 49);
             this.kiesWifiOfLanPanel.TabIndex = 11;
-            // 
-            // lanVerbindingButton
-            // 
-            this.lanVerbindingButton.AutoSize = true;
-            this.lanVerbindingButton.Location = new System.Drawing.Point(3, 3);
-            this.lanVerbindingButton.Name = "lanVerbindingButton";
-            this.lanVerbindingButton.Size = new System.Drawing.Size(98, 17);
-            this.lanVerbindingButton.TabIndex = 0;
-            this.lanVerbindingButton.TabStop = true;
-            this.lanVerbindingButton.Text = "LAN verbinding";
-            this.lanVerbindingButton.UseVisualStyleBackColor = true;
             // 
             // wifiVerbindingButton
             // 
@@ -201,6 +197,17 @@ namespace change_IP
             this.wifiVerbindingButton.Text = "WIFI verbinding";
             this.wifiVerbindingButton.UseVisualStyleBackColor = true;
             // 
+            // lanVerbindingButton
+            // 
+            this.lanVerbindingButton.AutoSize = true;
+            this.lanVerbindingButton.Location = new System.Drawing.Point(3, 3);
+            this.lanVerbindingButton.Name = "lanVerbindingButton";
+            this.lanVerbindingButton.Size = new System.Drawing.Size(98, 17);
+            this.lanVerbindingButton.TabIndex = 0;
+            this.lanVerbindingButton.TabStop = true;
+            this.lanVerbindingButton.Text = "LAN verbinding";
+            this.lanVerbindingButton.UseVisualStyleBackColor = true;
+            // 
             // verbindingLabel
             // 
             this.verbindingLabel.AutoSize = true;
@@ -210,13 +217,6 @@ namespace change_IP
             this.verbindingLabel.TabIndex = 12;
             this.verbindingLabel.Text = "Adaptor";
             // 
-            // lANNaamWijzigenToolStripMenuItem
-            // 
-            this.lANNaamWijzigenToolStripMenuItem.Name = "lANNaamWijzigenToolStripMenuItem";
-            this.lANNaamWijzigenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.lANNaamWijzigenToolStripMenuItem.Text = "LAN naam wijzigen";
-            this.lANNaamWijzigenToolStripMenuItem.Click += new System.EventHandler(this.lANNaamWijzigenToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,7 +224,7 @@ namespace change_IP
             this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.verbindingLabel);
             this.Controls.Add(this.kiesWifiOfLanPanel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.openRouterWebpageButton);
             this.Controls.Add(this.openRouterLabel);
             this.Controls.Add(this.Input);
             this.Controls.Add(this.turnOnDHCP);
@@ -259,7 +259,7 @@ namespace change_IP
         private System.Windows.Forms.ToolStripMenuItem iPInstellingenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gatewayWijzigenToolStripMenuItem;
         private System.Windows.Forms.Label openRouterLabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button openRouterWebpageButton;
         private System.Windows.Forms.ToolStripMenuItem standaardRouterpoortWijzigenToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel kiesWifiOfLanPanel;
