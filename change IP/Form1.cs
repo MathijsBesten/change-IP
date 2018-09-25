@@ -28,10 +28,9 @@ namespace change_IP
         public string IPRouter = Properties.Settings.Default.IPRouter;
         #endregion
         #region button_click
-        private void saveSettings_Click(object sender, EventArgs e)
+        private void SaveSettings_Click(object sender, EventArgs e)
         {
-            IPAddress geldigIPAdres;
-            bool inputIsValid = IPAddress.TryParse(Input.Text,out geldigIPAdres);
+            bool inputIsValid = IPAddress.TryParse(Input.Text, out IPAddress geldigIPAdres); //out geldigIPAdres is a now a variable
             if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
             {
                 MessageBox.Show("Er is geen Netwerk interface geselecteerd. Kies WIFI of LAN. Probeer het opnieuw");
@@ -53,8 +52,10 @@ namespace change_IP
                     try
                     {
                         Process p = new Process();
-                        ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \""+ NaamNetwerkInterface + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 "+ Gateway + " 1");
-                        psi.Verb = "runas";
+                        ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 " + Gateway + " 1")
+                        {
+                            Verb = "runas"
+                        };
                         p.StartInfo = psi;
                         p.Start();
 
@@ -67,7 +68,7 @@ namespace change_IP
                 }
             }
         }
-        private void turnOnDHCP_Click(object sender, EventArgs e)
+        private void TurnOnDHCP_Click(object sender, EventArgs e)
         {
             if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
             {
@@ -89,8 +90,10 @@ namespace change_IP
                 try
                 {
                     Process p = new Process();
-                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" dhcp");
-                    psi.Verb = "runas";
+                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" dhcp")
+                    {
+                        Verb = "runas"
+                    };
                     p.StartInfo = psi;
                     p.Start();
                 }
@@ -101,7 +104,7 @@ namespace change_IP
                 }
             }
         } 
-        private void openRouterWebpageButton_Click(object sender, EventArgs e)
+        private void OpenRouterWebpageButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -115,25 +118,25 @@ namespace change_IP
         }
         #endregion
         #region settingseditors 
-        private void lANNaamWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LANNaamWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("LAN adapter naam", "LANnaam", Properties.Settings.Default.LANnaam);
             LANnaam = Properties.Settings.Default.LANnaam;
         }
-        private void iPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IPInstellingenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("WIFI adapter naam", "NICnaam", Properties.Settings.Default.NICnaam);
             NICnaam = Properties.Settings.Default.NICnaam;
         }
-        private void gatewayWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GatewayWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("Gateway", "Gateway", Properties.Settings.Default.Gateway);
             Gateway = Properties.Settings.Default.Gateway;
         }
-        private void standaardRouterpoortWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StandaardRouterpoortWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             change_settings dialog = new change_settings();
             dialog.ShowDialog("Standaard router IP adres", "IPRouter", Properties.Settings.Default.IPRouter);

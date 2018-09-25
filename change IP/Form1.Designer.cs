@@ -90,7 +90,7 @@ namespace change_IP
             this.saveSettings.TabIndex = 5;
             this.saveSettings.Text = "IP adres opslaan";
             this.saveSettings.UseVisualStyleBackColor = true;
-            this.saveSettings.Click += new System.EventHandler(this.saveSettings_Click);
+            this.saveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
             // 
             // turnOnDHCP
             // 
@@ -100,7 +100,7 @@ namespace change_IP
             this.turnOnDHCP.TabIndex = 6;
             this.turnOnDHCP.Text = "Automatisch IP adres";
             this.turnOnDHCP.UseVisualStyleBackColor = true;
-            this.turnOnDHCP.Click += new System.EventHandler(this.turnOnDHCP_Click);
+            this.turnOnDHCP.Click += new System.EventHandler(this.TurnOnDHCP_Click);
             // 
             // Input
             // 
@@ -135,28 +135,28 @@ namespace change_IP
             this.lANNaamWijzigenToolStripMenuItem.Name = "lANNaamWijzigenToolStripMenuItem";
             this.lANNaamWijzigenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.lANNaamWijzigenToolStripMenuItem.Text = "LAN naam wijzigen";
-            this.lANNaamWijzigenToolStripMenuItem.Click += new System.EventHandler(this.lANNaamWijzigenToolStripMenuItem_Click);
+            this.lANNaamWijzigenToolStripMenuItem.Click += new System.EventHandler(this.LANNaamWijzigenToolStripMenuItem_Click);
             // 
             // iPInstellingenToolStripMenuItem
             // 
             this.iPInstellingenToolStripMenuItem.Name = "iPInstellingenToolStripMenuItem";
             this.iPInstellingenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.iPInstellingenToolStripMenuItem.Text = "WIFI naam wijzigen";
-            this.iPInstellingenToolStripMenuItem.Click += new System.EventHandler(this.iPInstellingenToolStripMenuItem_Click);
+            this.iPInstellingenToolStripMenuItem.Click += new System.EventHandler(this.IPInstellingenToolStripMenuItem_Click);
             // 
             // gatewayWijzigenToolStripMenuItem
             // 
             this.gatewayWijzigenToolStripMenuItem.Name = "gatewayWijzigenToolStripMenuItem";
             this.gatewayWijzigenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.gatewayWijzigenToolStripMenuItem.Text = "Gateway wijzigen";
-            this.gatewayWijzigenToolStripMenuItem.Click += new System.EventHandler(this.gatewayWijzigenToolStripMenuItem_Click);
+            this.gatewayWijzigenToolStripMenuItem.Click += new System.EventHandler(this.GatewayWijzigenToolStripMenuItem_Click);
             // 
             // standaardRouterpoortWijzigenToolStripMenuItem
             // 
             this.standaardRouterpoortWijzigenToolStripMenuItem.Name = "standaardRouterpoortWijzigenToolStripMenuItem";
             this.standaardRouterpoortWijzigenToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.standaardRouterpoortWijzigenToolStripMenuItem.Text = "Standaard router IP wijzigen";
-            this.standaardRouterpoortWijzigenToolStripMenuItem.Click += new System.EventHandler(this.standaardRouterpoortWijzigenToolStripMenuItem_Click);
+            this.standaardRouterpoortWijzigenToolStripMenuItem.Click += new System.EventHandler(this.StandaardRouterpoortWijzigenToolStripMenuItem_Click);
             // 
             // openRouterLabel
             // 
@@ -175,7 +175,7 @@ namespace change_IP
             this.openRouterWebpageButton.TabIndex = 10;
             this.openRouterWebpageButton.Text = "Router openen";
             this.openRouterWebpageButton.UseVisualStyleBackColor = true;
-            this.openRouterWebpageButton.Click += new System.EventHandler(this.openRouterWebpageButton_Click);
+            this.openRouterWebpageButton.Click += new System.EventHandler(this.OpenRouterWebpageButton_Click);
             // 
             // kiesWifiOfLanPanel
             // 
