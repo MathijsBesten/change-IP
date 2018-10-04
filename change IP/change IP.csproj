@@ -25,6 +25,7 @@
     <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -71,6 +72,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>internet.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>change_IP.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

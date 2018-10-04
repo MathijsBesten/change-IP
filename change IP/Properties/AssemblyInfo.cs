@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("IP adres veranderen")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A tool made for KSH to change your IP address on the fly")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Klimaatservice Holland - Mathijs")]
 [assembly: AssemblyProduct("IP adres veranderen - tool")]
 [assembly: AssemblyCopyright("Copyright © Klimaatservice Holland 2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("KSH")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
