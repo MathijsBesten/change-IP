@@ -1,3 +1,4 @@
+using change_IP.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +23,7 @@ namespace change_IP
         {
             InitializeComponent();
         }
+        IPClass bla = Functions.IPDetails.GetAdaptorIPConfig();
         #region public values
         public string NICnaam = Properties.Settings.Default.NICnaam; //naam van WIFI adaptor
         public string LANnaam = Properties.Settings.Default.LANnaam; //naam van LAN adaptor

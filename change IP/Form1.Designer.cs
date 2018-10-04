@@ -76,7 +76,7 @@ namespace change_IP
             // ipadreslabel
             // 
             this.ipadreslabel.AutoSize = true;
-            this.ipadreslabel.Location = new System.Drawing.Point(114, 134);
+            this.ipadreslabel.Location = new System.Drawing.Point(19, 126);
             this.ipadreslabel.Name = "ipadreslabel";
             this.ipadreslabel.Size = new System.Drawing.Size(46, 13);
             this.ipadreslabel.TabIndex = 4;
@@ -84,7 +84,7 @@ namespace change_IP
             // 
             // saveSettings
             // 
-            this.saveSettings.Location = new System.Drawing.Point(117, 220);
+            this.saveSettings.Location = new System.Drawing.Point(22, 212);
             this.saveSettings.Name = "saveSettings";
             this.saveSettings.Size = new System.Drawing.Size(103, 23);
             this.saveSettings.TabIndex = 5;
@@ -94,7 +94,7 @@ namespace change_IP
             // 
             // turnOnDHCP
             // 
-            this.turnOnDHCP.Location = new System.Drawing.Point(253, 220);
+            this.turnOnDHCP.Location = new System.Drawing.Point(158, 212);
             this.turnOnDHCP.Name = "turnOnDHCP";
             this.turnOnDHCP.Size = new System.Drawing.Size(121, 23);
             this.turnOnDHCP.TabIndex = 6;
@@ -104,7 +104,7 @@ namespace change_IP
             // 
             // Input
             // 
-            this.Input.Location = new System.Drawing.Point(166, 131);
+            this.Input.Location = new System.Drawing.Point(71, 123);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(100, 20);
             this.Input.TabIndex = 7;
@@ -161,7 +161,7 @@ namespace change_IP
             // openRouterLabel
             // 
             this.openRouterLabel.AutoSize = true;
-            this.openRouterLabel.Location = new System.Drawing.Point(114, 270);
+            this.openRouterLabel.Location = new System.Drawing.Point(19, 262);
             this.openRouterLabel.Name = "openRouterLabel";
             this.openRouterLabel.Size = new System.Drawing.Size(133, 13);
             this.openRouterLabel.TabIndex = 9;
@@ -169,7 +169,7 @@ namespace change_IP
             // 
             // openRouterWebpageButton
             // 
-            this.openRouterWebpageButton.Location = new System.Drawing.Point(253, 265);
+            this.openRouterWebpageButton.Location = new System.Drawing.Point(158, 257);
             this.openRouterWebpageButton.Name = "openRouterWebpageButton";
             this.openRouterWebpageButton.Size = new System.Drawing.Size(121, 23);
             this.openRouterWebpageButton.TabIndex = 10;
@@ -181,7 +181,7 @@ namespace change_IP
             // 
             this.kiesWifiOfLanPanel.Controls.Add(this.wifiVerbindingButton);
             this.kiesWifiOfLanPanel.Controls.Add(this.lanVerbindingButton);
-            this.kiesWifiOfLanPanel.Location = new System.Drawing.Point(166, 165);
+            this.kiesWifiOfLanPanel.Location = new System.Drawing.Point(71, 157);
             this.kiesWifiOfLanPanel.Name = "kiesWifiOfLanPanel";
             this.kiesWifiOfLanPanel.Size = new System.Drawing.Size(149, 49);
             this.kiesWifiOfLanPanel.TabIndex = 11;
@@ -211,7 +211,7 @@ namespace change_IP
             // verbindingLabel
             // 
             this.verbindingLabel.AutoSize = true;
-            this.verbindingLabel.Location = new System.Drawing.Point(114, 165);
+            this.verbindingLabel.Location = new System.Drawing.Point(19, 157);
             this.verbindingLabel.Name = "verbindingLabel";
             this.verbindingLabel.Size = new System.Drawing.Size(44, 13);
             this.verbindingLabel.TabIndex = 12;
