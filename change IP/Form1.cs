@@ -23,7 +23,6 @@ namespace change_IP
         {
             InitializeComponent();
         }
-        IPClass bla = Functions.IPDetails.GetAdaptorIPConfig();
         #region public values
         public string NICnaam = Properties.Settings.Default.NICnaam; //naam van WIFI adaptor
         public string LANnaam = Properties.Settings.Default.LANnaam; //naam van LAN adaptor
@@ -146,5 +145,21 @@ namespace change_IP
             IPRouter = Properties.Settings.Default.IPRouter;
         }
         #endregion
+
+        private void lanVerbindingButton_CheckedChanged(object sender, EventArgs e)
+        {
+            IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(true); // true = lan  - false = wifi
+            currentIP.Text = IPData.IPAddress;
+            currentSubnet.Text = IPData.Subnetmask;
+            currentGateway.Text = IPData.Gateway;
+        }
+
+        private void wifiVerbindingButton_CheckedChanged(object sender, EventArgs e)
+        {
+            IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(false); // true = lan  - false = wifi
+            currentIP.Text = IPData.IPAddress;
+            currentSubnet.Text = IPData.Subnetmask;
+            currentGateway.Text = IPData.Gateway;
+        }
     }
 }

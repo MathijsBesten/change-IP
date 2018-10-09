@@ -48,13 +48,22 @@ namespace change_IP
             this.wifiVerbindingButton = new System.Windows.Forms.RadioButton();
             this.lanVerbindingButton = new System.Windows.Forms.RadioButton();
             this.verbindingLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.currentSettingsLabel = new System.Windows.Forms.Label();
+            this.currentGateway = new System.Windows.Forms.TextBox();
+            this.currentSubnet = new System.Windows.Forms.TextBox();
+            this.currentIP = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.kiesWifiOfLanPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // debugInstructionsLabel
             // 
-            this.debugInstructionsLabel.Location = new System.Drawing.Point(114, 50);
+            this.debugInstructionsLabel.Location = new System.Drawing.Point(63, 49);
             this.debugInstructionsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.debugInstructionsLabel.Name = "debugInstructionsLabel";
             this.debugInstructionsLabel.Size = new System.Drawing.Size(323, 30);
@@ -66,7 +75,7 @@ namespace change_IP
             // 
             this.helloWorldLabel.AutoSize = true;
             this.helloWorldLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helloWorldLabel.Location = new System.Drawing.Point(112, 24);
+            this.helloWorldLabel.Location = new System.Drawing.Point(61, 23);
             this.helloWorldLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.helloWorldLabel.Name = "helloWorldLabel";
             this.helloWorldLabel.Size = new System.Drawing.Size(320, 26);
@@ -76,7 +85,7 @@ namespace change_IP
             // ipadreslabel
             // 
             this.ipadreslabel.AutoSize = true;
-            this.ipadreslabel.Location = new System.Drawing.Point(19, 126);
+            this.ipadreslabel.Location = new System.Drawing.Point(63, 102);
             this.ipadreslabel.Name = "ipadreslabel";
             this.ipadreslabel.Size = new System.Drawing.Size(46, 13);
             this.ipadreslabel.TabIndex = 4;
@@ -84,7 +93,7 @@ namespace change_IP
             // 
             // saveSettings
             // 
-            this.saveSettings.Location = new System.Drawing.Point(22, 212);
+            this.saveSettings.Location = new System.Drawing.Point(66, 188);
             this.saveSettings.Name = "saveSettings";
             this.saveSettings.Size = new System.Drawing.Size(103, 23);
             this.saveSettings.TabIndex = 5;
@@ -94,7 +103,7 @@ namespace change_IP
             // 
             // turnOnDHCP
             // 
-            this.turnOnDHCP.Location = new System.Drawing.Point(158, 212);
+            this.turnOnDHCP.Location = new System.Drawing.Point(202, 188);
             this.turnOnDHCP.Name = "turnOnDHCP";
             this.turnOnDHCP.Size = new System.Drawing.Size(121, 23);
             this.turnOnDHCP.TabIndex = 6;
@@ -104,7 +113,7 @@ namespace change_IP
             // 
             // Input
             // 
-            this.Input.Location = new System.Drawing.Point(71, 123);
+            this.Input.Location = new System.Drawing.Point(115, 99);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(100, 20);
             this.Input.TabIndex = 7;
@@ -161,7 +170,7 @@ namespace change_IP
             // openRouterLabel
             // 
             this.openRouterLabel.AutoSize = true;
-            this.openRouterLabel.Location = new System.Drawing.Point(19, 262);
+            this.openRouterLabel.Location = new System.Drawing.Point(63, 238);
             this.openRouterLabel.Name = "openRouterLabel";
             this.openRouterLabel.Size = new System.Drawing.Size(133, 13);
             this.openRouterLabel.TabIndex = 9;
@@ -169,7 +178,7 @@ namespace change_IP
             // 
             // openRouterWebpageButton
             // 
-            this.openRouterWebpageButton.Location = new System.Drawing.Point(158, 257);
+            this.openRouterWebpageButton.Location = new System.Drawing.Point(202, 233);
             this.openRouterWebpageButton.Name = "openRouterWebpageButton";
             this.openRouterWebpageButton.Size = new System.Drawing.Size(121, 23);
             this.openRouterWebpageButton.TabIndex = 10;
@@ -181,7 +190,7 @@ namespace change_IP
             // 
             this.kiesWifiOfLanPanel.Controls.Add(this.wifiVerbindingButton);
             this.kiesWifiOfLanPanel.Controls.Add(this.lanVerbindingButton);
-            this.kiesWifiOfLanPanel.Location = new System.Drawing.Point(71, 157);
+            this.kiesWifiOfLanPanel.Location = new System.Drawing.Point(115, 133);
             this.kiesWifiOfLanPanel.Name = "kiesWifiOfLanPanel";
             this.kiesWifiOfLanPanel.Size = new System.Drawing.Size(149, 49);
             this.kiesWifiOfLanPanel.TabIndex = 11;
@@ -196,6 +205,7 @@ namespace change_IP
             this.wifiVerbindingButton.TabStop = true;
             this.wifiVerbindingButton.Text = "WIFI verbinding";
             this.wifiVerbindingButton.UseVisualStyleBackColor = true;
+            this.wifiVerbindingButton.CheckedChanged += new System.EventHandler(this.wifiVerbindingButton_CheckedChanged);
             // 
             // lanVerbindingButton
             // 
@@ -207,21 +217,98 @@ namespace change_IP
             this.lanVerbindingButton.TabStop = true;
             this.lanVerbindingButton.Text = "LAN verbinding";
             this.lanVerbindingButton.UseVisualStyleBackColor = true;
+            this.lanVerbindingButton.CheckedChanged += new System.EventHandler(this.lanVerbindingButton_CheckedChanged);
             // 
             // verbindingLabel
             // 
             this.verbindingLabel.AutoSize = true;
-            this.verbindingLabel.Location = new System.Drawing.Point(19, 157);
+            this.verbindingLabel.Location = new System.Drawing.Point(63, 133);
             this.verbindingLabel.Name = "verbindingLabel";
             this.verbindingLabel.Size = new System.Drawing.Size(44, 13);
             this.verbindingLabel.TabIndex = 12;
             this.verbindingLabel.Text = "Adaptor";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.currentSettingsLabel);
+            this.panel1.Controls.Add(this.currentGateway);
+            this.panel1.Controls.Add(this.currentSubnet);
+            this.panel1.Controls.Add(this.currentIP);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(333, 102);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(188, 154);
+            this.panel1.TabIndex = 13;
+            // 
+            // currentSettingsLabel
+            // 
+            this.currentSettingsLabel.AutoSize = true;
+            this.currentSettingsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentSettingsLabel.Location = new System.Drawing.Point(13, 28);
+            this.currentSettingsLabel.Name = "currentSettingsLabel";
+            this.currentSettingsLabel.Size = new System.Drawing.Size(125, 16);
+            this.currentSettingsLabel.TabIndex = 6;
+            this.currentSettingsLabel.Text = "Huidige instellingen";
+            // 
+            // currentGateway
+            // 
+            this.currentGateway.Location = new System.Drawing.Point(69, 113);
+            this.currentGateway.Name = "currentGateway";
+            this.currentGateway.ReadOnly = true;
+            this.currentGateway.Size = new System.Drawing.Size(100, 20);
+            this.currentGateway.TabIndex = 5;
+            // 
+            // currentSubnet
+            // 
+            this.currentSubnet.Location = new System.Drawing.Point(69, 86);
+            this.currentSubnet.Name = "currentSubnet";
+            this.currentSubnet.ReadOnly = true;
+            this.currentSubnet.Size = new System.Drawing.Size(100, 20);
+            this.currentSubnet.TabIndex = 4;
+            // 
+            // currentIP
+            // 
+            this.currentIP.Location = new System.Drawing.Point(69, 60);
+            this.currentIP.Name = "currentIP";
+            this.currentIP.ReadOnly = true;
+            this.currentIP.Size = new System.Drawing.Size(100, 20);
+            this.currentIP.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Gateway";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Subnet";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "IP";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.verbindingLabel);
             this.Controls.Add(this.kiesWifiOfLanPanel);
             this.Controls.Add(this.openRouterWebpageButton);
@@ -242,6 +329,8 @@ namespace change_IP
             this.menuStrip1.PerformLayout();
             this.kiesWifiOfLanPanel.ResumeLayout(false);
             this.kiesWifiOfLanPanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +356,14 @@ namespace change_IP
         private System.Windows.Forms.RadioButton lanVerbindingButton;
         private System.Windows.Forms.Label verbindingLabel;
         private System.Windows.Forms.ToolStripMenuItem lANNaamWijzigenToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label currentSettingsLabel;
+        private System.Windows.Forms.TextBox currentGateway;
+        private System.Windows.Forms.TextBox currentSubnet;
+        private System.Windows.Forms.TextBox currentIP;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 
