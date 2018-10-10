@@ -30,18 +30,22 @@ namespace change_IP.Functions
             {
                 if (NetworkInterface.Name == SelectedNICName)
                 {
-                    var listOfAddresses = NetworkInterface.GetIPProperties().UnicastAddresses;
-                    var bla = listOfAddresses[listOfAddresses.Count -1]; //get last entry in the list. Last one is always the correct one. Regartless of DHCP or Manaual
-                    CurrentIPData.IPAddress = bla.Address.ToString();
-                    CurrentIPData.Subnetmask = bla.IPv4Mask.ToString();
                     try
                     {
-                        CurrentIPData.Gateway = NetworkInterface.GetIPProperties().GatewayAddresses[0].Address.ToString();
+                        var listOfAddresses = NetworkInterface.GetIPProperties().UnicastAddresses;
+                        var bla = listOfAddresses[listOfAddresses.Count - 1]; //get last entry in the list. Last one is always the correct one. Regartless of DHCP or Manaual
+                        CurrentIPData.IPAddress = bla.Address.ToString();
+                        CurrentIPData.Subnetmask = bla.IPv4Mask.ToString();
+                        try
+                        {
+                            CurrentIPData.Gateway = NetworkInterface.GetIPProperties().GatewayAddresses[0].Address.ToString();
+                        }
+                        catch (Exception)
+                        {
+                            CurrentIPData.Gateway = "Niet bekend";
+                        }
                     }
-                    catch (Exception)
-                    {
-                        CurrentIPData.Gateway = "Niet bekend";
-                    }
+                    catch { CurrentIPData = GetAdaptorIPConfig(NICisLAN); }
                     break;
                 }                              
             }
