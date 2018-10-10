@@ -148,18 +148,24 @@ namespace change_IP
 
         private void lanVerbindingButton_CheckedChanged(object sender, EventArgs e)
         {
-            IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(true); // true = lan  - false = wifi
-            currentIP.Text = IPData.IPAddress;
-            currentSubnet.Text = IPData.Subnetmask;
-            currentGateway.Text = IPData.Gateway;
+            if (lanVerbindingButton.Checked)
+            {
+                IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(true); // true = lan  - false = wifi
+                currentIP.Text = IPData.IPAddress;
+                currentSubnet.Text = IPData.Subnetmask;
+                currentGateway.Text = IPData.Gateway;
+            }
         }
 
         private void wifiVerbindingButton_CheckedChanged(object sender, EventArgs e)
         {
-            IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(false); // true = lan  - false = wifi
-            currentIP.Text = IPData.IPAddress;
-            currentSubnet.Text = IPData.Subnetmask;
-            currentGateway.Text = IPData.Gateway;
+            if (wifiVerbindingButton.Checked)
+            {
+                IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(false); // true = lan  - false = wifi
+                currentIP.Text = IPData.IPAddress;
+                currentSubnet.Text = IPData.Subnetmask;
+                currentGateway.Text = IPData.Gateway;
+            }
         }
     }
 }

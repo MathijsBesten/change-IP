@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +21,7 @@ namespace change_IP.Functions
             if (NICisLAN)
             {
                  SelectedNICName = Properties.Settings.Default.LANnaam; //naam van LAN adaptor
-            }
+            }   
             else
             {
                 SelectedNICName = Properties.Settings.Default.NICnaam; //naam van WIFI adaptor
@@ -28,9 +30,8 @@ namespace change_IP.Functions
             {
                 if (NetworkInterface.Name == SelectedNICName)
                 {
-
-
-                    var bla = NetworkInterface.GetIPProperties().UnicastAddresses[0];
+                    var listOfAddresses = NetworkInterface.GetIPProperties().UnicastAddresses;
+                    var bla = listOfAddresses[listOfAddresses.Count -1]; //get last entry in the list. Last one is always the correct one. Regartless of DHCP or Manaual
                     CurrentIPData.IPAddress = bla.Address.ToString();
                     CurrentIPData.Subnetmask = bla.IPv4Mask.ToString();
                     try
@@ -44,7 +45,6 @@ namespace change_IP.Functions
                     break;
                 }                              
             }
-
             return CurrentIPData;
         }
     }
