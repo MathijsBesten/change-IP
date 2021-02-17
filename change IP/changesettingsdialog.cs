@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,8 +24,11 @@ namespace change_IP
             settingName = settingsname;
             instellingNaam.Text = setting;
             inputBox.Text = currentValue;
+            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                inputBox.Items.Add(nic.Name);
+            }
             this.ShowDialog();
-
         }
 
         private void opslaanButton_Click(object sender, EventArgs e)

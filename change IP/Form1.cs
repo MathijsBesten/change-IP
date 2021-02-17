@@ -24,13 +24,21 @@ namespace change_IP
             InitializeComponent();
         }
         #region public values
-        public string NICnaam = Properties.Settings.Default.NICnaam; //naam van WIFI adaptor
-        public string LANnaam = Properties.Settings.Default.LANnaam; //naam van LAN adaptor
+        public string NICnaam = Properties.Settings.Default.NICnaam; //naam van WIFI adapter
+        public string LANnaam = Properties.Settings.Default.LANnaam; //naam van LAN adapter
         public string Gateway = Properties.Settings.Default.Gateway;
-        public string IPRouter = Properties.Settings.Default.IPRouter;
         #endregion
-        #region button_click
+        #region save setting main
         private void SaveSettings_Click(object sender, EventArgs e)
+        {
+            ChangeIPOrDHCP(true);
+        }
+        private void TurnOnDHCP_Click(object sender, EventArgs e)
+        {
+            ChangeIPOrDHCP(false);
+        }
+        
+        public void ChangeIPOrDHCP(bool changeToStaticIP) //true = static IP - false = DHCP
         {
             bool inputIsValid = IPAddress.TryParse(Input.Text, out IPAddress geldigIPAdres); //out geldigIPAdres is a now a variable
             if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
@@ -39,7 +47,7 @@ namespace change_IP
                 return;
             }
             else
-            { 
+            {
                 string NaamNetwerkInterface;
                 if (wifiVerbindingButton.Checked == true)
                 {
@@ -54,13 +62,18 @@ namespace change_IP
                     try
                     {
                         Process p = new Process();
-                        ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 " + Gateway + " 1")
+                        ProcessStartInfo psi;
+                        if (changeToStaticIP)//Static IP address
                         {
-                            Verb = "runas"
-                        };
+                             psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" static " + geldigIPAdres.ToString() + " 255.255.255.0 " + Gateway + " 1"){Verb = "runas"};
+                        }
+                        else //DHCP
+                        {
+                             psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" dhcp"){Verb = "runas"};
+                        }
+
                         p.StartInfo = psi;
                         p.Start();
-
                     }
                     catch (Exception error)
                     {
@@ -68,54 +81,6 @@ namespace change_IP
                         throw;
                     }
                 }
-            }
-        }
-        private void TurnOnDHCP_Click(object sender, EventArgs e)
-        {
-            if (wifiVerbindingButton.Checked == false && lanVerbindingButton.Checked == false)
-            {
-                MessageBox.Show("Er is geen Netwerk interface geselecteerd. Kies WIFI of LAN. Probeer het opnieuw");
-                return;
-            }
-            else
-            {
-                string NaamNetwerkInterface;
-                if (wifiVerbindingButton.Checked == true)
-                {
-                    NaamNetwerkInterface = NICnaam;
-                }
-                else // LAN is now the only option
-                {
-                    NaamNetwerkInterface = LANnaam;
-                }
-
-                try
-                {
-                    Process p = new Process();
-                    ProcessStartInfo psi = new ProcessStartInfo("netsh", "interface ip set address \"" + NaamNetwerkInterface + "\" dhcp")
-                    {
-                        Verb = "runas"
-                    };
-                    p.StartInfo = psi;
-                    p.Start();
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message);
-                    throw;
-                }
-            }
-        } 
-        private void OpenRouterWebpageButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("http://"+ Properties.Settings.Default.IPRouter);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("kan webpagina niet openen - foutmelding: " + error.Message);
-                throw;
             }
         }
         #endregion
@@ -138,22 +103,13 @@ namespace change_IP
             dialog.ShowDialog("Gateway", "Gateway", Properties.Settings.Default.Gateway);
             Gateway = Properties.Settings.Default.Gateway;
         }
-        private void StandaardRouterpoortWijzigenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            change_settings dialog = new change_settings();
-            dialog.ShowDialog("Standaard router IP adres", "IPRouter", Properties.Settings.Default.IPRouter);
-            IPRouter = Properties.Settings.Default.IPRouter;
-        }
         #endregion
-
+        #region radiobutton change
         private void lanVerbindingButton_CheckedChanged(object sender, EventArgs e)
         {
             if (lanVerbindingButton.Checked)
             {
-                IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(true); // true = lan  - false = wifi
-                currentIP.Text = IPData.IPAddress;
-                currentSubnet.Text = IPData.Subnetmask;
-                currentGateway.Text = IPData.Gateway;
+                VernieuwHuidigeIPGegevens(true);
             }
         }
 
@@ -161,11 +117,16 @@ namespace change_IP
         {
             if (wifiVerbindingButton.Checked)
             {
-                IPClass IPData = Functions.IPDetails.GetAdaptorIPConfig(false); // true = lan  - false = wifi
-                currentIP.Text = IPData.IPAddress;
-                currentSubnet.Text = IPData.Subnetmask;
-                currentGateway.Text = IPData.Gateway;
+                VernieuwHuidigeIPGegevens(false);
             }
         }
+        public void VernieuwHuidigeIPGegevens(bool adapterIsLan)// true = lan  - false = wifi
+        {
+            IPClass IPData = Functions.IPDetails.GetAdapterIPConfig(adapterIsLan); 
+            currentIP.Text = IPData.IPAddress;
+            currentSubnet.Text = IPData.Subnetmask;
+            currentGateway.Text = IPData.Gateway;
+        }
+        #endregion
     }
 }

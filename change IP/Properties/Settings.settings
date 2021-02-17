@@ -8,9 +8,6 @@
     <Setting Name="Gateway" Type="System.String" Scope="User">
       <Value Profile="(Default)">192.168.1.45</Value>
     </Setting>
-    <Setting Name="IPRouter" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.1.250</Value>
-    </Setting>
     <Setting Name="LANnaam" Type="System.String" Scope="User">
       <Value Profile="(Default)">LAN-verbinding</Value>
     </Setting>

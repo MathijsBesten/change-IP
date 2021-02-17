@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(change_settings));
             this.label1 = new System.Windows.Forms.Label();
             this.instellingNaam = new System.Windows.Forms.Label();
-            this.inputBox = new System.Windows.Forms.TextBox();
             this.opslaanButton = new System.Windows.Forms.Button();
+            this.inputBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,13 +54,6 @@
             this.instellingNaam.TabIndex = 1;
             this.instellingNaam.Text = "instellingnaam";
             // 
-            // inputBox
-            // 
-            this.inputBox.Location = new System.Drawing.Point(329, 124);
-            this.inputBox.Name = "inputBox";
-            this.inputBox.Size = new System.Drawing.Size(100, 20);
-            this.inputBox.TabIndex = 2;
-            // 
             // opslaanButton
             // 
             this.opslaanButton.Location = new System.Drawing.Point(257, 182);
@@ -71,13 +64,21 @@
             this.opslaanButton.UseVisualStyleBackColor = true;
             this.opslaanButton.Click += new System.EventHandler(this.opslaanButton_Click);
             // 
+            // inputBox
+            // 
+            this.inputBox.FormattingEnabled = true;
+            this.inputBox.Location = new System.Drawing.Point(289, 124);
+            this.inputBox.Name = "inputBox";
+            this.inputBox.Size = new System.Drawing.Size(169, 21);
+            this.inputBox.TabIndex = 4;
+            // 
             // change_settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 354);
-            this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.inputBox);
+            this.Controls.Add(this.opslaanButton);
             this.Controls.Add(this.instellingNaam);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -92,7 +93,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label instellingNaam;
-        private System.Windows.Forms.TextBox inputBox;
         private System.Windows.Forms.Button opslaanButton;
+        private System.Windows.Forms.ComboBox inputBox;
     }
 }
