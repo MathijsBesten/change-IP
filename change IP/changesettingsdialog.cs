@@ -24,9 +24,16 @@ namespace change_IP
             settingName = settingsname;
             instellingNaam.Text = setting;
             inputBox.Text = currentValue;
-            foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+            if (settingsname != "Gateway") //Gateway cannot use dropdown function
             {
-                inputBox.Items.Add(nic.Name);
+                foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    inputBox.Items.Add(nic.Name);
+                }
+            }
+            else
+            {
+                inputBox.DropDownStyle = ComboBoxStyle.Simple; //remove dropdown function from combobox
             }
             this.ShowDialog();
         }

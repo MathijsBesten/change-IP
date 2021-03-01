@@ -37,7 +37,7 @@ namespace change_IP.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.1")]
         public string Gateway {
             get {
                 return ((string)(this["Gateway"]));

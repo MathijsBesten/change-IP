@@ -6,7 +6,7 @@
       <Value Profile="(Default)">LAN-verbinding</Value>
     </Setting>
     <Setting Name="Gateway" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.1.45</Value>
+      <Value Profile="(Default)">192.168.1.1</Value>
     </Setting>
     <Setting Name="LANnaam" Type="System.String" Scope="User">
       <Value Profile="(Default)">LAN-verbinding</Value>
